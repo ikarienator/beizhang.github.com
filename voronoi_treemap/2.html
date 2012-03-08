@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Voronoi - Voronoi Treemaps -- Infrastractures</title>
+
+    <!-- Test CSS -->
+    <link type="text/css" href="style.css" rel="stylesheet"/>
+    <!--[if IE]>
+    <script language="javascript" type="text/javascript" src="/Extras/excanvas.js"></script><![endif]-->
+    <script language="javascript" type="text/javascript" src="jit.js"></script>
+    <script type="text/javascript">
+        var labelType, useGradients, nativeTextSupport, animate;
+
+        (function() {
+            var ua = navigator.userAgent,
+                    iStuff = ua.match(/iPhone/i) || ua.match(/iPad/i),
+                    typeOfCanvas = typeof HTMLCanvasElement,
+                    nativeCanvasSupport = (typeOfCanvas == 'object' || typeOfCanvas == 'function'),
+                    textSupport = nativeCanvasSupport
+                            && (typeof document.createElement('canvas').getContext('2d').fillText == 'function');
+            //I'm setting this based on the fact that ExCanvas provides text support for IE
+            //and that as of today iPhone/iPad current text support is lame
+            labelType = (!nativeCanvasSupport || (textSupport && !iStuff)) ? 'Native' : 'HTML';
+            nativeTextSupport = labelType == 'Native';
+            useGradients = nativeCanvasSupport;
+            animate = !(iStuff || !nativeCanvasSupport);
+        })();
+
+        var Log = {
+            elem: false,
+            write: function(text) {
+                if (!this.elem)
+                    this.elem = document.getElementById('log');
+                this.elem.innerHTML = text;
+                this.elem.style.left = (500 - this.elem.offsetWidth / 2) + 'px';
+            }
+        };
+    </script>
+    <!-- Add test -->
+    <script language="javascript" type="text/javascript" src="test2.js"></script>
+</head>
+
+<body onload="init();">
+<div id="container">
+    <div id="left-container">
+        <a href="index.html" title="next">prev</a>
+        <a href="3.html" title="next">next</a>
+
+
+        <div class="text">
+            <h4>
+                Voronoi Treemaps -- Infrastractures
+            </h4>
+
+            Test Voronoi Treemap Infrastractures
+
+        </div>
+
+        <a id="back" href="#" class="theme button white">Go to Parent</a>
+
+    </div>
+    <div id="center-container">
+        <div id="infovis"></div>
+    </div>
+    <div id="right-container">
+
+        <div id="inner-details"></div>
+
+    </div>
+    <div id="log"></div>
+</div>
+</body>
+</html>

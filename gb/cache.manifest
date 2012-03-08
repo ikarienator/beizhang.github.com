@@ -1,0 +1,9 @@
+CACHE MANIFEST
+CACHE:
+css/index.css
+images/circ.png
+images/line.png
+images/point.png
+images/sel.png
+scripts/geoboard.js
+scripts/geoboard.compiled.js
