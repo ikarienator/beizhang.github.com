@@ -5,7 +5,7 @@ function onPageLoad () {
     var list = [
         {
             title: 'Geoboard',
-            intro: 'Geoboard is a HTML5 based geometry sketchpad inspired by <a target="_blank" href="http://www.dynamicgeometry.com/">Geometers Sketchpad</a>. You are able to create points, line segments, creating parallel and perpendicular lines, intersections, circles and trace. ' +
+            intro: 'Geoboard is an HTML5 based geometry sketchpad inspired by <a target="_blank" href="http://www.dynamicgeometry.com/">Geometers Sketchpad</a>. You are able to create points, line segments, creating parallel and perpendicular lines, intersections, circles and trace. ' +
                 'They will maintain their geometric relationship.',
             src: 'gb/index.html',
             icon: 'icons/line.png'
