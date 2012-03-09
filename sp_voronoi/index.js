@@ -3,7 +3,7 @@ window.addEventListener('DOMContentLoaded', webGLStart, false);
 function webGLStart () {
     var numSites = 1,
         sites = [0, 0, 1],
-        siteColors = [0.5, 0.5, 0.59],
+        siteColors = [250 / 255, 138 / 255, 9 / 255],
         width = 800,
         height = 600,
         R = 200,
