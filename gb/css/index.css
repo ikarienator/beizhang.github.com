@@ -293,7 +293,9 @@ input[type="text"] {
 #footer * {
     color: black;
     font-family: 'Crimson Text', Verdana;
-}ul.show-ud span.ud {
+}
+
+ul.show-ud span.ud {
     text-decoration: underline;
 }
 

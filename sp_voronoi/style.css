@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    text-align: center;
+}
+
+canvas {
+    background: black;
+    position: absolute;
+    left: 5px;
+    right: 5px;
+    top: 5px;
+    bottom: 5px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+#intro {
+    text-align: left;
+    color: #FFF;
+    position: absolute;
+    position: fixed;
+    z-index: 10000;
+    background: #333;
+    border: 1px solid #666;
+    padding: 7px;
+    left: 10px;
+    top: 10px;
+}
+
+.inst {
+    color: #FF8;
+}
+
+
+a {
+    color: #FFC;
+}
