@@ -281,7 +281,6 @@ input[type="text"] {
     z-index: 100000;
     text-align: right;
     padding-right: 7px;
-    color: black;
 }
 
 #footer span {
@@ -291,7 +290,8 @@ input[type="text"] {
 }
 
 #footer * {
-    color: black;
+    color: white;
+    text-shadow: 1px 1px 0px black;
     font-family: 'Crimson Text', Verdana;
 }
 
