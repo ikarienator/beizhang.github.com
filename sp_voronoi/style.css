@@ -20,6 +20,7 @@ canvas {
 
 #intro {
     text-align: left;
+    font-size: 13px;
     color: #FFF;
     position: absolute;
     position: fixed;
