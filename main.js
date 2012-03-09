@@ -22,7 +22,7 @@ function onPageLoad () {
             title: 'Spherical Voronoi Diagram',
             intro: 'Spherical Voronoi Diagram is a Voronoi Diagram in spherical space.',
             src: 'sp_voronoi/index.html',
-            icon: 'icons/icon.jpg'
+            icon: 'icons/spvoronoi.png'
         }
     ]
     window.applyDemo = function (i) {

@@ -3,7 +3,7 @@ window.addEventListener('DOMContentLoaded', webGLStart, false);
 function webGLStart () {
     var numSites = 1,
         sites = [0, 0, 1],
-        siteColors = [0.5, 0.5, 0.7],
+        siteColors = [0.5, 0.5, 0.59],
         width = 800,
         height = 600,
         R = 200,
@@ -31,6 +31,12 @@ function webGLStart () {
 
     window.addEventListener('resize', resize);
     resize();
+
+    function randomColor () {
+        var x = [Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.5],
+            i = Math.random();
+        return [x[0] * 0.05 + i, x[1] * 0.05 + i, x[2] * 0.05 + i];
+    }
 
     function calcXYZ (e) {
         var x = e.x / R,
@@ -114,7 +120,7 @@ function webGLStart () {
             onClick: function (e) {
                 var v3 = calcXYZ(e);
                 sites.push(v3[0], v3[1], v3[2]);
-                siteColors.push(Math.random(), Math.random(), Math.random());
+                siteColors.push.apply(siteColors, randomColor());
                 weight.push(Math.random() * 2 + 1);
                 numSites++;
             }
