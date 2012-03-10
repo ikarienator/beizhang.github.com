@@ -77,8 +77,8 @@ function webGLStart () {
             onMouseWheel: function (e) {
                 var id = new PhiloGL.Mat4();
                 id.id();
-                id.$rotateAxis((e.event.wheelDeltaX) / 5 / R, [0, 1, 0])
-                    .$rotateAxis((e.event.wheelDeltaY) / 5 / R, [1, 0, 0]);
+                id.$rotateAxis(('wheelDeltaX' in e.event ? e.event.wheelDeltaX : 0) / 5 / R, [0, 1, 0])
+                    .$rotateAxis(('wheelDeltaY' in e.event ? e.event.wheelDeltaY : e.wheel * 120) / 5 / R, [1, 0, 0]);
                 mat = id.mulMat4(mat);
                 imat = mat.invert();
                 var v3 = calcXYZ(e);
