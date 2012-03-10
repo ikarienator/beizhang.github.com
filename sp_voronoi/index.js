@@ -1,6 +1,6 @@
 window.addEventListener('DOMContentLoaded', webGLStart, false);
 
-function webGLStart () {
+function webGLStart() {
     var numSites = 1,
         sites = [0, 0, 1],
         siteColors = [250 / 255, 138 / 255, 9 / 255],
@@ -19,7 +19,7 @@ function webGLStart () {
     mat.id();
     imat.id();
 
-    function resize () {
+    function resize() {
         var canvas = document.getElementById('voronoi'),
             style = window.getComputedStyle(canvas);
         height = parseFloat(style.getPropertyValue('height'));
@@ -27,18 +27,19 @@ function webGLStart () {
         width = parseFloat(style.getPropertyValue('width'));
         canvas.width = width;
         R = Math.min(width, height) / 2 - 10;
+        window.app && window.app.update();
     }
 
     window.addEventListener('resize', resize);
     resize();
 
-    function randomColor () {
+    function randomColor() {
         var x = [Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.5],
-            i = Math.random();
+            i = Math.random() * 0.95;
         return [x[0] * 0.05 + i, x[1] * 0.05 + i, x[2] * 0.05 + i];
     }
 
-    function calcXYZ (e) {
+    function calcXYZ(e) {
         var x = e.x / R,
             y = e.y / R,
             z = 1.0 - x * x - y * y;
@@ -65,16 +66,16 @@ function webGLStart () {
             vs: 'sph-shader.vs.glsl',
             fs: 'sph-shader.fs.glsl'
         },
-        onError: function (e) {
+        onError: function(e) {
             alert(e);
         },
         events: {
             cachePosition: false,
-            onDragStart: function (e) {
+            onDragStart: function(e) {
                 matStart = mat.clone();
                 dragStart = [e.x, e.y];
             },
-            onMouseWheel: function (e) {
+            onMouseWheel: function(e) {
                 var id = new PhiloGL.Mat4();
                 id.id();
                 id.$rotateAxis(('wheelDeltaX' in e.event ? e.event.wheelDeltaX : 0) / 5 / R, [0, 1, 0])
@@ -89,7 +90,7 @@ function webGLStart () {
                 e.event.stopPropagation();
                 this.update();
             },
-            onDragMove: function (e) {
+            onDragMove: function(e) {
                 var id = new PhiloGL.Mat4();
                 id.id();
                 id.$rotateAxis((e.x - dragStart[0]) / R, [0, 1, 0])
@@ -102,7 +103,7 @@ function webGLStart () {
                 sites[2] = v3[2];
                 this.update();
             },
-            onDragEnd: function (e) {
+            onDragEnd: function(e) {
                 var id = new PhiloGL.Mat4();
                 id.id();
                 id.$rotateAxis((e.x - dragStart[0]) / R, [0, 1, 0])
@@ -115,14 +116,14 @@ function webGLStart () {
                 sites[2] = v3[2];
                 this.update();
             },
-            onMouseMove: function (e) {
+            onMouseMove: function(e) {
                 var v3 = calcXYZ(e);
                 sites[0] = v3[0];
                 sites[1] = v3[1];
                 sites[2] = v3[2];
                 this.update();
             },
-            onClick: function (e) {
+            onClick: function(e) {
                 var v3 = calcXYZ(e);
                 sites.push(v3[0], v3[1], v3[2]);
                 siteColors.push.apply(siteColors, randomColor());
@@ -131,15 +132,15 @@ function webGLStart () {
                 this.update();
             }
         },
-        onLoad: function (app) {
+        onLoad: function(app) {
             var gl = app.gl,
                 canvas = app.canvas,
                 program = app.program,
                 camera = app.camera;
 
             gl.viewport(0, 0, canvas.width, canvas.height);
-
-            app.update = function () {
+            window.app = app;
+            app.update = function() {
                 gl.clearColor(0, 0, 0, 1);
                 gl.clearDepth(1);
                 gl.viewport(0, 0, width, height);
