@@ -23,6 +23,14 @@ function onPageLoad () {
             intro: 'Spherical Voronoi Diagram is a Voronoi Diagram in spherical space.',
             src: 'sp_voronoi/index.html',
             icon: 'icons/spvoronoi.png'
+        },
+        {
+            title: 'Symbolic Manipulation',
+            intro: 'This is a demo for the library <a target="_blank" href="http://www.github.com/zhangbei/Symlet">Symlet</a> to calculate ' +
+                '<a target="_blank" href="http://en.wikipedia.org/wiki/Automatic_differentiation">symbolic derivatives</a>.' +
+                'With Symlet you are allowed to parse, validate, simplify and manipulate a mathematical expression.',
+            src: 'calculus/index.html',
+            icon: 'icons/df_dx.png'
         }
     ]
     window.applyDemo = function (i) {

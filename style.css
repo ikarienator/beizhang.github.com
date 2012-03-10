@@ -28,7 +28,7 @@ body {
 
 .center .header {
     height: 52px;
-    width: 920px;
+    width: 915px;
 }
 
 a {
@@ -88,7 +88,7 @@ iframe {
 #menu > .item {
     cursor: pointer;
     margin-right: 2px;
-    background: rgba(255, 255, 255, .3);
+    background: #CCC;
     border: 1px solid #333;
     float: left;
     width: 32px;
