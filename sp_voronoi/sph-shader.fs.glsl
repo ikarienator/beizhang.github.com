@@ -12,6 +12,7 @@ uniform float ws[SITE_MAX];
 uniform vec3 siteColors[SITE_MAX];
 uniform mat4 modelMat;
 uniform float R;
+varying vec2 vTexCoord1;
 #define PI 3.1415926535897
 
 vec4 sample(float x0, float y0) {
@@ -49,6 +50,6 @@ vec4 sample(float x0, float y0) {
   return color;
 }
 void main(void) {
-  float x = gl_FragCoord.x, y = gl_FragCoord.y;
+  float x = vTexCoord1.x * width, y = vTexCoord1.y * height;
   gl_FragColor = sample(x, y);
 }

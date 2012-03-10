@@ -60,6 +60,7 @@ function webGLStart () {
 
     PhiloGL('voronoi', {
         program: {
+            id: 'voronoi',
             from: 'uris',
             vs: 'sph-shader.vs.glsl',
             fs: 'sph-shader.fs.glsl'
@@ -86,6 +87,7 @@ function webGLStart () {
                 sites[2] = v3[2];
                 e.event.preventDefault();
                 e.event.stopPropagation();
+                this.update();
             },
             onDragMove: function (e) {
                 var id = new PhiloGL.Mat4();
@@ -98,6 +100,7 @@ function webGLStart () {
                 sites[0] = v3[0];
                 sites[1] = v3[1];
                 sites[2] = v3[2];
+                this.update();
             },
             onDragEnd: function (e) {
                 var id = new PhiloGL.Mat4();
@@ -110,12 +113,14 @@ function webGLStart () {
                 sites[0] = v3[0];
                 sites[1] = v3[1];
                 sites[2] = v3[2];
+                this.update();
             },
             onMouseMove: function (e) {
                 var v3 = calcXYZ(e);
                 sites[0] = v3[0];
                 sites[1] = v3[1];
                 sites[2] = v3[2];
+                this.update();
             },
             onClick: function (e) {
                 var v3 = calcXYZ(e);
@@ -123,6 +128,7 @@ function webGLStart () {
                 siteColors.push.apply(siteColors, randomColor());
                 weight.push(Math.random() * 2 + 1);
                 numSites++;
+                this.update();
             }
         },
         onLoad: function (app) {
@@ -133,42 +139,32 @@ function webGLStart () {
 
             gl.viewport(0, 0, canvas.width, canvas.height);
 
-            gl.enable(gl.DEPTH_TEST);
-            gl.depthFunc(gl.LEQUAL);
-            program.setBuffers({
-                'square': {
-                    attribute: 'aVertexPosition',
-                    value: new Float32Array([1, 1, -1, 1, 1, -1, -1, -1]),
-                    size: 2
-                }
-            });
-
-            function update () {
-                draw();
-                setTimeout(update, 30);
-            }
-
-            function draw () {
+            app.update = function () {
                 gl.clearColor(0, 0, 0, 1);
                 gl.clearDepth(1);
                 gl.viewport(0, 0, width, height);
                 gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-                program.setUniform('numberSites', numSites);
-                program.setUniform('sites', sites);
-                program.setUniform('ws', weight);
-                program.setUniform('siteColors', siteColors);
-                program.setUniform('p', 2);
-                program.setUniform('modelMat', mat);
-                program.setUniform('weighted', weighted);
-                program.setUniform('width', width);
-                program.setUniform('height', height);
-                program.setUniform('R', R);
-                program.setBuffer('square');
-                program.setBuffer('squareColors');
-                gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+                PhiloGL.Media.Image.postProcess({
+                    program: 'voronoi',
+                    width: width,
+                    height: height,
+                    toScreen: true,
+                    uniforms: {
+                        'numberSites': numSites,
+                        'sites': sites,
+                        'ws': weight,
+                        'siteColors': siteColors,
+                        'p': 2,
+                        'modelMat': mat,
+                        'weighted': weighted,
+                        'width': width,
+                        'height': height,
+                        'R': R
+                    }
+                });
             }
 
-            update();
+            app.update();
         }
     });
 }
