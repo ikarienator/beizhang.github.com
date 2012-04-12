@@ -12,7 +12,8 @@ input.error {
 }
 
 #container {
-    width: 920px;
+    width: 930px;
+    position: relative;
     margin: auto;
 }
 
@@ -32,12 +33,15 @@ td {
 .title {
     text-align: center;
 }
+
 .controls {
-    position: relative;
-    background: #cae5f4;
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    width: 880px;
+    background: rgba(255, 255, 255, 0.3);
     padding: 7px;
-    border: 1px solid #333;
-    margin: 7px 0;
+    margin: 8px;
     color: #000;
     font-size: 13px;
     /*  text-align: left;*/
@@ -60,11 +64,8 @@ td {
     color: #111;
 }
 
-#canvas-container {
-    margin: auto;
-}
-
 canvas {
+    border: 1px solid #333;
     margin-top: 5px;
 }
 

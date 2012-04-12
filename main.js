@@ -7,7 +7,7 @@ function onPageLoad () {
             title: 'WebGL Wave Demo',
             intro: 'This example demonstrates the ability to calculate an simple physical model using GPU. As well as several very common rendering features such as Fresnel reflection/refraction, geometric ray tracing and HDRI.',
             src: 'wave/index.html',
-            icon: 'icons/line.png'
+            icon: 'icons/wave2.jpg'
         },
         {
             title: 'Geoboard',
