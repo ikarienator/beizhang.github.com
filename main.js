@@ -4,6 +4,12 @@ function onPageLoad () {
         view = document.getElementById('view');
     var list = [
         {
+            title: 'WebGL Wave Demo',
+            intro: 'This example demonstrates the ability to calculate an simple physical model using GPU. As well as several very common rendering features such as Fresnel reflection/refraction, geometric ray tracing and HDRI.',
+            src: 'wave/index.html',
+            icon: 'icons/line.png'
+        },
+        {
             title: 'Geoboard',
             intro: 'Geoboard is an HTML5 based geometry sketchpad inspired by <a target="_blank" href="http://www.dynamicgeometry.com/">Geometers Sketchpad</a>. You are able to create points, line segments, creating parallel and perpendicular lines, intersections, circles and trace. ' +
                 'They will maintain their geometric relationship.',

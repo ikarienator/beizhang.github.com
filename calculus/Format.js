@@ -48,11 +48,7 @@
                 return part1 + ' * ' + part2;
             }
         } else if (ast[0] == '/') {
-            if ((ast[1][0] == '+' || ast[1][0] == '-') ||
-                (ast[2][0] == '+' || ast[2][0] == '-' || ast[2][0] == '*' || ast[2][0] == '/')) {
-                return '\\frac{' + format(ast[1], type) + '}{' + format(ast[2], type) + '}';
-            }
-            return format(ast[1], type) + ' / ' + format(ast[2], type);
+              return '\\frac{' + format(ast[1], type) + '}{' + format(ast[2], type) + '}';
         } else if (ast[0] == '^') {
             var part1 = (ast[1][0] == 'call' && ast[1][1] != 'sqrt' || ast[1][0] == '.+' || ast[1][0] == '.-' || ast[1][0] == '+' || ast[1][0] == '-' || ast[1][0] == '*' || ast[1][0] == '/' || ast[1][0] == '^') ? '(' + format(ast[1], type) + ')' : format(ast[1], type),
                 part2 = format(ast[2], type);
