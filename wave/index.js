@@ -106,11 +106,11 @@ function webGLStart() {
       parameters: [
         {
           name: 'TEXTURE_MAG_FILTER',
-          value: 'LINEAR'
+          value: 'LINEAR_MIPMAP_NEAREST'
         },
         {
           name: 'TEXTURE_MIN_FILTER',
-          value: 'LINEAR',
+          value: 'LINEAR_MIPMAP_NEAREST',
           generateMipmap: true
         }
       ],
