@@ -35,6 +35,16 @@ td {
     text-align: center;
 }
 
+#wait {
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    top: 40%;
+    color: white;
+    font-size: 19px;
+}
+
 .controls {
     -webkit-touch-callout: none;
     -webkit-user-select: none;

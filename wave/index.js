@@ -37,7 +37,7 @@ function webGLStart() {
     dt = 1,
     drops = 5,
     IOR = 1.3330, // Water
-    N = 5;
+    N = 10;
 
   matStart.id();
 
@@ -170,6 +170,7 @@ function webGLStart() {
     },
 
     onLoad: function(app) {
+      Utils("wait").style.display = 'none';
       PhiloGL.unpack();
       window.app = app;
       var start = +new Date();
