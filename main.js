@@ -7,7 +7,8 @@ function onPageLoad () {
             title: 'WebGL Wave Demo',
             intro: 'This example demonstrates the ability to calculate an simple physical model using GPU. ' +
                 'As well as several very common rendering features such as Fresnel reflection/refraction, geometric ray tracing and HDRI. ' +
-                'It currently supports only Chrome and Safari, and might need some time to load the texture for the first run.',
+                'It currently supports only Chrome and Safari, and might need some time to load the texture for the first run. <br/>' +
+                'Scroll to zoom, drag to rotate',
             src: 'wave/index.html',
             icon: 'icons/wave2.jpg'
         },
