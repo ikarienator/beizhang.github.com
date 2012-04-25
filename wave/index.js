@@ -253,7 +253,7 @@ function webGLStart() {
           camera = this.camera;
         scene.add(backgroundSphere);
         scene.add(waterSurface);
-        scene.add(shore);
+//        scene.add(shore);
         camera.fov = 37.8; // 35mm
         camera.far = 1e40;
         camera.update();
