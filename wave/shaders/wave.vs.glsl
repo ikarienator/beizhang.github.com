@@ -17,7 +17,7 @@ varying vec2 vTexCoord;
 #include "packing.glsl"
 
 float height(vec2 position) {
-  return decode(texture2D(sampler1, position));
+  return decode(texture2D(sampler1, position)) * 100.;
 } 
 
 void main(void) {

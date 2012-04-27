@@ -37,8 +37,8 @@ float vol(vec2 position) {
 
 void main(void) {
 
-  float sticky = 0.00;
-  float k = 5.;
+  float viscous = 0.0;
+  float k = 2.;
   float regression = 0.0;
   float fade = 0.97;
   
@@ -59,7 +59,7 @@ void main(void) {
   
   // f += h * .1;
   a = dh * k;
-  h += (v0 + a * dt / (1. - sticky)) * dt;
+  h += (v0 + a * dt / (1. - viscous)) * dt;
   if (isElevation) {
     gl_FragColor = encode(h);
   } else {

@@ -16,9 +16,9 @@ void main(void) {
   float y = floor(position.y * RESOLUTIONY);
   float dist = distance(
     vec2(position.x * RESOLUTIONX, position.y * RESOLUTIONY), 
-    vec2((cursor.x + 0.5) * RESOLUTIONX, (cursor.y + 0.5) * RESOLUTIONY)) * 0.6;
+    vec2((cursor.x + 0.5) * RESOLUTIONX, (cursor.y + 0.5) * RESOLUTIONY)) * 0.5;
     
   float el = decode(texture2D(sampler1, position));
-  el += elevation * exp(- dist * dist) / 10.;
+  el += elevation * exp(- dist * dist) / 1000.;
   gl_FragColor = encode(el) ;
 }
