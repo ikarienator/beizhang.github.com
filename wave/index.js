@@ -77,6 +77,13 @@ function webGLStart() {
         vs: 'shaders/wave.vs.glsl',
         fs: 'shaders/wave.fs.glsl',
         noCache: true
+      },
+      {
+        id: 'sample',
+        from: 'uris',
+        vs: 'shaders/plain.vs.glsl',
+        fs: 'shaders/sample.fs.glsl',
+        noCache: true
       }
     ],
 
@@ -200,6 +207,35 @@ function webGLStart() {
 
       // Create framebuffer
       surfaceBuffer = new SwapTexture({width: RESOLUTIONX, height: RESOLUTIONY}, 2);
+      app.setFrameBuffer('render', {
+        width: width,
+        height: height * 2,
+        bindToTexture: {
+          pixelStore: [],
+          parameters: [
+            {
+              name: gl.TEXTURE_MAG_FILTER,
+              value: gl.NEAREST
+            },
+            {
+              name: gl.TEXTURE_MIN_FILTER,
+              value: gl.NEAREST,
+              generateMipmap: false
+            },
+            {
+              name: gl.TEXTURE_WRAP_S,
+              value: gl.CLAMP_TO_EDGE
+            },
+            {
+              name: gl.TEXTURE_WRAP_T,
+              value: gl.CLAMP_TO_EDGE
+            }
+          ]
+        },
+        renderBufferOptions: {
+          attachment: gl.DEPTH_ATTACHMENT
+        }
+      });
 
       // Utility functions
       app.initScene = function() {
@@ -261,7 +297,7 @@ function webGLStart() {
             camera = this.camera;
         scene.add(backgroundSphere);
         scene.add(waterSurface);
-        scene.add(shore);
+//        scene.add(shore);
         camera.fov = 37.8; // 35mm
         camera.far = 1e40;
         camera.update();
@@ -298,9 +334,23 @@ function webGLStart() {
         gl.clearColor(0, 0, 0, 1);
         gl.clearDepth(1);
         gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-        gl.viewport(0, 0, width, height);
         waterSurface.textures = [surfaceBuffer.from[0] + '-texture', 'SKY0', 'SKY1', 'SKY2', 'SKY3', 'rocks'];
-        this.scene.render();
+        app.setFrameBuffer('render', true);
+        gl.viewport(0, 0, width, height * 2);
+        this.scene.renderToTexture('render');
+        app.setFrameBuffer('render', false);
+        gl.viewport(0, 0, width, height);
+        PhiloGL.Media.Image.postProcess({
+          width: width,
+          height: height,
+          fromTexture: 'render-texture',
+          toScreen: true,
+          program: 'sample',
+          uniforms: {
+            width: width,
+            height: height * 2
+          }
+        });
         if (lastDrop < time - 300) {
           lastDrop = time - 300;
         }
