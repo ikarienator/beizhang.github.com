@@ -4,7 +4,15 @@ function onPageLoad () {
         view = document.getElementById('view');
     var list = [
         {
-            title: 'WebGL Wave Demo',
+            title: 'PhiloGL Smoke Demo',
+            intro: 'This example demonstrates the ability to calculate an simple physical model using GPU. <br/>' +
+                '131072 particles are emitted in a zero-divergence velocity field.<br/>' +
+                'Drag to rotate',
+            src: 'smoke/index.html',
+            icon: 'icons/smoke.png'
+        },
+        {
+            title: 'PhiloGL Wave Demo',
             intro: 'This example demonstrates the ability to calculate an simple physical model using GPU. ' +
                 'As well as several very common rendering features such as Fresnel reflection/refraction, geometric ray tracing and HDRI. ' +
                 'It currently supports only Chrome and Safari, and might need some time to load the texture for the first run. <br/>' +
