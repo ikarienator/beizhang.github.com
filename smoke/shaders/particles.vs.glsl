@@ -7,7 +7,7 @@ varying float idx;
 
 uniform sampler2D sampler1, sampler2, sampler3;
 
-uniform float multiple, near, far, platform;
+uniform float multiple, near, far, platform, size;
 uniform vec3 cameraPosition, lightPosition;
 uniform mat4 objectMatrix, viewMatrix, worldMatrix;
 uniform mat4 projectionMatrix;
@@ -34,7 +34,7 @@ void main(void) {
   gl_Position = projectionMatrix * worldMatrix * vec4(position, 1);
   vPosition = gl_Position;
   float alpha = 1. - pow((1. - life), .5);
-  gl_PointSize = devicePixelRatio * 40. / (gl_Position.z + 1.) * (max(0.5, alpha)); 
+  gl_PointSize = devicePixelRatio * size * 40. / (gl_Position.z + 1.) * (max(0.5, alpha)); 
   depth = (gl_Position.z  - 2.) / 5.;
   if (depth < near || far <= depth) {
     gl_PointSize = 0.;
